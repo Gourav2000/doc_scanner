@@ -1,6 +1,9 @@
+import 'dart:convert';
 import 'dart:io';
+import 'dart:typed_data';
 import 'package:flutter/cupertino.dart';
-import 'package:image_cropper/image_cropper.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
@@ -14,12 +17,16 @@ class ScanDocument extends StatefulWidget {
 }
 
 class _ScanDocumentState extends State<ScanDocument> {
+
+  static const platform=const MethodChannel('doc_Scanner/Crop');
+
   final pdf = pw.Document();
   TextEditingController fname=TextEditingController();
-  File _image, _cropped_file, _editFile;
+  File _image ;
+  var _cropped_file, _editFile;
   var imgconfig;
   final picker = ImagePicker();
-  List<File> img = [];
+  List img = [];
   List<bool> selected = [];
   List<int> indexes = [];
   bool select = false;
@@ -29,65 +36,70 @@ class _ScanDocumentState extends State<ScanDocument> {
     setState(() {
       _image = File(pickedFile.path);
     });
-    _cropped_file = await ImageCropper.cropImage(
-        //maxHeight:PdfPageFormat.a4.height.toInt(),
-        //maxWidth: PdfPageFormat.a4.width.toInt(),
-        sourcePath: _image.path,
-        compressQuality: 100,
-        aspectRatioPresets:
-        [
-          CropAspectRatioPreset.square,
-          CropAspectRatioPreset.ratio3x2,
-          CropAspectRatioPreset.original,
-          CropAspectRatioPreset.ratio4x3,
-          CropAspectRatioPreset.ratio16x9,
-        ],
-        androidUiSettings: AndroidUiSettings(
-            toolbarTitle: 'Cropper',
-            toolbarColor: Colors.greenAccent[400],
-            activeControlsWidgetColor: Colors.greenAccent[400],
-            cropFrameColor: Colors.white,
-            backgroundColor: Colors.white,
-            toolbarWidgetColor: Colors.white,
-            initAspectRatio: CropAspectRatioPreset.original,
-            lockAspectRatio: false),
-        iosUiSettings: IOSUiSettings(
-          minimumAspectRatio: 1.0,
-        ));
+    var x=await _image.length();
+    if(x>3000000) {
+      while (x ~/ 10 != 0) {
+        x = x ~/ 10;
+      }
+      x=x~/2;
+    }
+    else{
+      x=2;
+    }
+    var bytes=await testCompressFile(_image,x);
+    String base64=base64Encode(bytes);
+    _cropped_file=await get_it_cropped(base64);
     setState(() {
       if (_cropped_file != null) {
         img.add(_cropped_file);
         selected.add(false);
+        _cropped_file=null;
       }
     });
   }
 
+  Future<Uint8List> testCompressFile(File file,int x) async {
+    var result = await FlutterImageCompress.compressWithFile(
+      file.absolute.path,
+      inSampleSize: x,
+      quality: 70,
+      rotate: 0,
+    );
+    print(file.lengthSync());
+    print(result.length);
+    return result;
+  }
+
+
   Future updateImage(int index) async {
-    _editFile = await ImageCropper.cropImage(
-        sourcePath: img[index].path,
-        aspectRatioPresets: [
-          CropAspectRatioPreset.square,
-          CropAspectRatioPreset.ratio3x2,
-          CropAspectRatioPreset.original,
-          CropAspectRatioPreset.ratio4x3,
-          CropAspectRatioPreset.ratio16x9,
-        ],
-        androidUiSettings: AndroidUiSettings(
-            toolbarTitle: 'Cropper',
-            cropFrameColor: Colors.white,
-            toolbarColor: Colors.greenAccent[400],
-            toolbarWidgetColor: Colors.white,
-            backgroundColor: Colors.white,
-            initAspectRatio: CropAspectRatioPreset.original,
-            lockAspectRatio: false),
-        iosUiSettings: IOSUiSettings(
-          minimumAspectRatio: 1.0,
-        ));
+    String base642=base64Encode(img[index]);
+    _editFile=await get_it_cropped(base642);
     setState(() {
       if (_editFile != null) {
         img[index] = _editFile;
+        _editFile=null;
       }
     });
+  }
+
+  get_it_cropped (String string)async{
+    var _cropped_photo;
+    bool x=false;
+    try{
+      await platform.invokeMethod('get_it_cropped',string);
+    }catch(e)
+    {
+      print(e+"wtf");
+    }
+    while(!x){
+      x=await platform.invokeMethod("check");
+    }
+    String crop64=await platform.invokeMethod("get_cropped_img");
+    String s=crop64.replaceAll("\n", "");
+    setState(() {
+      _cropped_photo = base64Decode(s);
+    });
+    return _cropped_photo;
   }
 
   Widget _Pages(BuildContext context, int index) {
@@ -115,7 +127,7 @@ class _ScanDocumentState extends State<ScanDocument> {
             decoration: BoxDecoration(
                 border: Border.all(color: Colors.greenAccent[400], width: 2),
                 image: DecorationImage(
-                    fit: BoxFit.fill, image: FileImage(img[index]))),
+                    fit: BoxFit.fill, image: MemoryImage(img[index]))),
           ),
         ),
       ),
@@ -126,13 +138,13 @@ class _ScanDocumentState extends State<ScanDocument> {
     img.forEach((element)async {
       //var imgconfig= await decodeImageFromList(element.readAsBytesSync());
       //imgconfig.height>PdfPageFormat.a4.height?print("yes"):print("no");
-      var image = PdfImage.file(pdf.document, bytes: element.readAsBytesSync());
+      var image = PdfImage.file(pdf.document, bytes: element);
       try {
         pdf.addPage(pw.Page(
           pageFormat: PdfPageFormat.undefined,
             build: (pw.Context context) {
               return pw.Center(
-                child: pw.Image(image),
+                child: pw.Image(image)
               ); // Center
             })); //
       }
