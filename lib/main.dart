@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:doc_scanner/Home.dart';
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(MyApp());
 }
 

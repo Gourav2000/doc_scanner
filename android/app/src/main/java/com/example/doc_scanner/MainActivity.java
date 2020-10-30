@@ -69,7 +69,7 @@ public class MainActivity extends FlutterActivity {
                 byte[] byteArray = byteArrayOutputStream .toByteArray();
                 cropped_img= Base64.encodeToString(byteArray, Base64.DEFAULT);
                 rosult=true;
-                Toast.makeText(MainActivity.this, "Succesful it is mf###sss", Toast.LENGTH_LONG).show();
+                //Toast.makeText(MainActivity.this, "Succesful it is mf###sss", Toast.LENGTH_LONG).show();
             }
             else
                 Toast.makeText(MainActivity.this,"Something wen't wrong.",Toast.LENGTH_LONG).show();
@@ -77,7 +77,7 @@ public class MainActivity extends FlutterActivity {
         else if(requestCode==1234){
             cropped_img=null;
             rosult=true;
-            Toast.makeText(MainActivity.this,"It is cancelled.",Toast.LENGTH_LONG).show();
+            //Toast.makeText(MainActivity.this,"It is cancelled.",Toast.LENGTH_LONG).show();
         }
     }
 
