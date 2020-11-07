@@ -29,6 +29,7 @@ class _ScanDocumentState extends State<ScanDocument> {
   final picker = ImagePicker();
   List img = [];
   List<bool> selected = [];
+  List<bool> SelectCheck = [];
   List<int> indexes = [];
   bool select = false;
 
@@ -178,10 +179,9 @@ class _ScanDocumentState extends State<ScanDocument> {
             textColor: Colors.white,
             fontSize: 16.0);
         Navigator.of(context).pop();
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) {
-              return PdfReader('$dpath', '$finame');
-            }));
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return PdfReader('$dpath', '$finame');
+        }));
       } catch (e) {
         print(e + " is exception");
         Fluttertoast.showToast(
@@ -221,8 +221,8 @@ class _ScanDocumentState extends State<ScanDocument> {
                       Navigator.of(context).pop();
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
-                            return PdfReader('$dpath', '$finame');
-                          }));
+                        return PdfReader('$dpath', '$finame');
+                      }));
                     } catch (e) {
                       print(e);
                       Fluttertoast.showToast(
@@ -234,7 +234,6 @@ class _ScanDocumentState extends State<ScanDocument> {
                           textColor: Colors.white,
                           fontSize: 16.0);
                     }
-
                   },
                   child: Text('Yes'),
                 ),
@@ -413,15 +412,18 @@ class _ScanDocumentState extends State<ScanDocument> {
                             getImage(ImageSource.camera);
                             Navigator.of(context).pop();
                           },
-                          child: Row(
-                            children: <Widget>[
-                              Icon(Icons.camera_alt),
-                              Text(' Camera')
-                            ],
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 5, bottom: 5),
+                            child: Row(
+                              children: <Widget>[
+                                Icon(Icons.camera_alt),
+                                Text(' Camera')
+                              ],
+                            ),
                           ),
                         ),
                         Padding(
-                            padding: EdgeInsets.only(top: 10, bottom: 10),
+                            padding: EdgeInsets.only(top: 1, bottom: 1),
                             child: Container(
                               height: 1.0,
                               width: 130.0,
@@ -433,11 +435,14 @@ class _ScanDocumentState extends State<ScanDocument> {
                             getImage(ImageSource.gallery);
                             Navigator.of(context).pop();
                           },
-                          child: Row(
-                            children: <Widget>[
-                              Icon(Icons.image),
-                              Text(' Gallery')
-                            ],
+                          child: Padding(
+                            padding: EdgeInsets.only(top: 5, bottom: 5),
+                            child: Row(
+                              children: <Widget>[
+                                Icon(Icons.image),
+                                Text(' Gallery')
+                              ],
+                            ),
                           ),
                         ),
                       ],

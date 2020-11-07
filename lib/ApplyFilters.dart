@@ -42,16 +42,11 @@ ApplyFilters(context,_imageArray,_image)async{
     l.removeAt(39-29);
     l.removeAt(40-30);
   }
-  for(int i=0;i<presetFiltersList.length;++i)
-    {
-      print(i);
-      print(presetFiltersList[i]);
-    }
   Map imagefile = await Navigator.push(
     context,
     new MaterialPageRoute(
       builder: (context) => new PhotoFilterSelector(
-        title: Text("Photo Filter Example"),
+        title: Text("Apply Filters"),
         image: image,
         appBarColor: Colors.greenAccent[400],
         filters: presetFiltersList,
