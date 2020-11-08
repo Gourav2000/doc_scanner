@@ -1,5 +1,6 @@
 import 'package:doc_scanner/Archive.dart';
 import 'package:doc_scanner/PdfReader.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:doc_scanner/ScanDocument.dart';
 import 'package:doc_scanner/ScanID.dart';
@@ -18,188 +19,200 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Container(
-              margin: EdgeInsets.all(5),
-              child: Row(
-                children: <Widget>[
-                  Spacer(),
-                  InkWell(
-                    splashColor: Colors.yellow,
-                    onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)
-                      {
-                        return ScanDocument();
-                      }));
-                    },
-                    child: Container(
-                      height: 50,
-                      width: 200,
-                      decoration: BoxDecoration(
-                          shape: BoxShape.rectangle,
-                          borderRadius: BorderRadius.all(Radius.circular(20)),
-                          color: Colors.greenAccent[400]),
+        body: Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topRight,
+                  end: Alignment.bottomLeft,
+                  colors: [ Colors.greenAccent[400],Colors.black])),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                height: 400,
+                width: 300,
+                child: Image.asset('assets/icon.png'),
+              ),
+              Container(
+                margin: EdgeInsets.all(5),
+                child: Row(
+                  children: <Widget>[
+                    Spacer(),
+                    InkWell(
+                      splashColor: Colors.yellow,
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context)
+                        {
+                          return ScanDocument();
+                        }));
+                      },
                       child: Container(
-                        margin: EdgeInsets.only(left: 25),
-                        child: Row(
-                          children: <Widget>[
-                            Icon(
-                              Icons.insert_drive_file,
-                              color: Colors.white,
-                            ),
-                            Text(
-                              ' Scan Document',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 17,
-                                  color: Colors.white),
-                            )
-                          ],
+                        height: 50,
+                        width: 200,
+                        decoration: BoxDecoration(
+                            shape: BoxShape.rectangle,
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            color: Colors.greenAccent[400]),
+                        child: Container(
+                          margin: EdgeInsets.only(left: 25),
+                          child: Row(
+                            children: <Widget>[
+                              Icon(
+                                Icons.insert_drive_file,
+                                color: Colors.white,
+                              ),
+                              Text(
+                                ' Scan Document',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 17,
+                                    color: Colors.white),
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  Spacer(),
-                ],
+                    Spacer(),
+                  ],
+                ),
               ),
-            ),
-            Container(
-              margin: EdgeInsets.all(5),
-              child: Row(
-                children: <Widget>[
-                  Spacer(),
-                  InkWell(
-                    splashColor: Colors.yellow,
-                    onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)
-                      {
-                        return OcrPage();
-                      }));
-                    },
-                    child: Container(
-                      height: 50,
-                      width: 200,
-                      decoration: BoxDecoration(
-                          shape: BoxShape.rectangle,
-                          borderRadius: BorderRadius.all(Radius.circular(20)),
-                          color: Colors.greenAccent[400]),
+              Container(
+                margin: EdgeInsets.all(5),
+                child: Row(
+                  children: <Widget>[
+                    Spacer(),
+                    InkWell(
+                      splashColor: Colors.yellow,
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context)
+                        {
+                          return OcrPage();
+                        }));
+                      },
                       child: Container(
-                        margin: EdgeInsets.only(left: 25),
-                        child: Row(
-                          children: <Widget>[
-                            Icon(
-                              Icons.pageview,
-                              color: Colors.white,
-                            ),
-                            Text(
-                              ' OCR',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 17,
-                                  color: Colors.white),
-                            )
-                          ],
+                        height: 50,
+                        width: 200,
+                        decoration: BoxDecoration(
+                            shape: BoxShape.rectangle,
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            color: Colors.greenAccent[400]),
+                        child: Container(
+                          margin: EdgeInsets.only(left: 25),
+                          child: Row(
+                            children: <Widget>[
+                              Icon(
+                                Icons.pageview,
+                                color: Colors.white,
+                              ),
+                              Text(
+                                ' OCR',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 17,
+                                    color: Colors.white),
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  Spacer(),
-                ],
+                    Spacer(),
+                  ],
+                ),
               ),
-            ),
-            Container(
-              margin: EdgeInsets.all(5),
-              child: Row(
-                children: <Widget>[
-                  Spacer(),
-                  InkWell(
-                    splashColor: Colors.yellow,
-                    onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)
-                      {
-                        return ScanId();
-                      }));
-                    },
-                    child: Container(
-                      height: 50,
-                      width: 200,
-                      decoration: BoxDecoration(
-                          shape: BoxShape.rectangle,
-                          borderRadius: BorderRadius.all(Radius.circular(20)),
-                          color: Colors.greenAccent[400]),
+              Container(
+                margin: EdgeInsets.all(5),
+                child: Row(
+                  children: <Widget>[
+                    Spacer(),
+                    InkWell(
+                      splashColor: Colors.yellow,
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context)
+                        {
+                          return ScanId();
+                        }));
+                      },
                       child: Container(
-                        margin: EdgeInsets.only(left: 25),
-                        child: Row(
-                          children: <Widget>[
-                            Icon(
-                              Icons.perm_identity,
-                              color: Colors.white,
-                            ),
-                            Text(
-                              ' Scan Id',
-                              style: TextStyle(
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white),
-                            )
-                          ],
+                        height: 50,
+                        width: 200,
+                        decoration: BoxDecoration(
+                            shape: BoxShape.rectangle,
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            color: Colors.greenAccent[400]),
+                        child: Container(
+                          margin: EdgeInsets.only(left: 25),
+                          child: Row(
+                            children: <Widget>[
+                              Icon(
+                                Icons.perm_identity,
+                                color: Colors.white,
+                              ),
+                              Text(
+                                ' Scan Id',
+                                style: TextStyle(
+                                    fontSize: 17,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  Spacer(),
-                ],
+                    Spacer(),
+                  ],
+                ),
               ),
-            ),
-            Container(
-              margin: EdgeInsets.all(5),
-              child: Row(
-                children: <Widget>[
-                  Spacer(),
-                  InkWell(
-                    splashColor: Colors.yellow,
-                    onTap: () async{
-                      Directory documentDirectory=await getExternalStorageDirectory();
-                      Navigator.push(context, MaterialPageRoute(builder: (context)
-                      {
-                        return Archive(documentDirectory);
-                      }));
-                    },
-                    child: Container(
-                      height: 50,
-                      width: 200,
-                      decoration: BoxDecoration(
-                          shape: BoxShape.rectangle,
-                          borderRadius: BorderRadius.all(Radius.circular(20)),
-                          color: Colors.greenAccent[400]),
+              Container(
+                margin: EdgeInsets.all(5),
+                child: Row(
+                  children: <Widget>[
+                    Spacer(),
+                    InkWell(
+                      splashColor: Colors.yellow,
+                      onTap: () async{
+                        Directory documentDirectory=await getExternalStorageDirectory();
+                        Navigator.push(context, MaterialPageRoute(builder: (context)
+                        {
+                          return Archive(documentDirectory);
+                        }));
+                      },
                       child: Container(
-                        margin: EdgeInsets.only(left: 25),
-                        child: Row(
-                          children: <Widget>[
-                            Icon(
-                              Icons.archive,
-                              color: Colors.white,
-                            ),
-                            Text(
-                              ' Archive',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 17,
-                                  color: Colors.white),
-                            )
-                          ],
+                        height: 50,
+                        width: 200,
+                        decoration: BoxDecoration(
+                            shape: BoxShape.rectangle,
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            color: Colors.greenAccent[400]),
+                        child: Container(
+                          margin: EdgeInsets.only(left: 25),
+                          child: Row(
+                            children: <Widget>[
+                              Icon(
+                                Icons.archive,
+                                color: Colors.white,
+                              ),
+                              Text(
+                                ' Archive',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 17,
+                                    color: Colors.white),
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  Spacer(),
-                ],
+                    Spacer(),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

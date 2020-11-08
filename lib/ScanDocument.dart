@@ -125,7 +125,7 @@ class _ScanDocumentState extends State<ScanDocument> {
       },
       child: Container(
         margin: EdgeInsets.all(2),
-        color: selected[index] ? Colors.lightBlueAccent : Colors.transparent,
+        color: selected[index] ? Colors.greenAccent : Colors.transparent,
         child: Center(
           child: Container(
             height: 160,
@@ -290,7 +290,7 @@ class _ScanDocumentState extends State<ScanDocument> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.greenAccent[400],
+        backgroundColor: Colors.black,
         actions: <Widget>[
           select
               ? IconButton(
@@ -386,6 +386,11 @@ class _ScanDocumentState extends State<ScanDocument> {
         leading: select ? new Container() : null,
       ),
       body: Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topRight,
+                  end: Alignment.bottomLeft,
+                  colors: [ Colors.greenAccent[400],Colors.black])),
           child: GridView.builder(
         gridDelegate:
             SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),

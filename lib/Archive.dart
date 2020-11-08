@@ -64,8 +64,8 @@ class _ArchiveState extends State<Archive> {
       },
       child: Container(
         decoration: BoxDecoration(
-          color: Selected[index] ? Colors.greenAccent[400] : null,
-          border: Border(bottom: BorderSide(width: 1, color: Colors.grey)),
+          color: Selected[index] ? Colors.greenAccent : null,
+          border: Border(bottom: BorderSide(width: 1, color: Colors.white)),
         ),
         padding: EdgeInsets.only(left: 2, right: 2, top: 16, bottom: 16),
         child: Row(
@@ -85,14 +85,14 @@ class _ArchiveState extends State<Archive> {
               children: <Widget>[
                 Text(
                   '  ' + fileList[index],
-                  style: TextStyle(fontSize: 19),
+                  style: TextStyle(fontSize: 19,color: Colors.white),
                 ),
                 Text(
                   '   ' +
                       DateFormat.Hm().format(filetime[index]) +
                       '  ' +
                       DateFormat.yMMMEd().format(filetime[index]),
-                  style: TextStyle(color: Colors.grey),
+                  style: TextStyle(color: Colors.white),
                 )
               ],
             )
@@ -222,15 +222,21 @@ class _ArchiveState extends State<Archive> {
               )
             : AppBar(
                 title: Text('Archive'),
-                backgroundColor: Colors.greenAccent[400],
+                backgroundColor: Colors.black,
               ),
-        body: Padding(
-          padding: EdgeInsets.only(top: 2),
-          child: Container(
-            color: Colors.white,
-            child: ListView.builder(
-              itemBuilder: dlistShow,
-              itemCount: sublist.length,
+        body: Container(
+          child: Padding(
+            padding: EdgeInsets.only(top: 2),
+            child: Container(
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      begin: Alignment.topRight,
+                      end: Alignment.bottomLeft,
+                      colors: [ Colors.greenAccent[400],Colors.black])),
+              child: ListView.builder(
+                itemBuilder: dlistShow,
+                itemCount: sublist.length,
+              ),
             ),
           ),
         ));

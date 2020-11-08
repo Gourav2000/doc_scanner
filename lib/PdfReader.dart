@@ -22,7 +22,7 @@ class _PdfReaderState extends State<PdfReader> {
     return PDFViewerScaffold(
       appBar: AppBar(
         title: Text('$fname'),
-        backgroundColor: Colors.greenAccent[400],
+        backgroundColor: Colors.black,
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.share),

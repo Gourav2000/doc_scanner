@@ -17,20 +17,27 @@ class _ShowTextState extends State<ShowText> {
     return Scaffold(
       appBar: AppBar(
         title: Text('OCR'),
-        backgroundColor: Colors.greenAccent[400],
+        backgroundColor: Colors.black,
       ),
-      body: Center(
-        child: Container(
-          height: MediaQuery.of(context).size.height*0.7,
-          width: MediaQuery.of(context).size.width*0.9,
-          decoration: BoxDecoration(
-            color: Colors.grey.withOpacity(0.3),
-            border: Border.all(color: Colors.greenAccent,width: 2),
-          ),
+      body: Container(
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft,
+                colors: [ Colors.greenAccent[400],Colors.black])),
+        child: Center(
           child: Container(
-            margin: EdgeInsets.all(10),
-            child: SelectableText(
-              text
+            height: MediaQuery.of(context).size.height*0.7,
+            width: MediaQuery.of(context).size.width*0.9,
+            decoration: BoxDecoration(
+              color: Colors.grey.withOpacity(0.3),
+              border: Border.all(color: Colors.greenAccent,width: 2),
+            ),
+            child: Container(
+              margin: EdgeInsets.all(10),
+              child: SelectableText(
+                text,style: TextStyle(color: Colors.white),
+              ),
             ),
           ),
         ),

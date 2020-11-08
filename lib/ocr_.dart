@@ -80,11 +80,18 @@ class _OcrPageState extends State<OcrPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('OCR'),
-        backgroundColor: Colors.greenAccent[400],
+        backgroundColor: Colors.black,
       ),
      /* body: Center(
         child: Container(
             child: f?Show_Waiting():null),),*/
+     body: Container(
+       decoration: BoxDecoration(
+           gradient: LinearGradient(
+               begin: Alignment.topRight,
+               end: Alignment.bottomLeft,
+               colors: [ Colors.greenAccent[400],Colors.black])),
+     ),
       floatingActionButton: f?null:FloatingActionButton(
         backgroundColor: Colors.greenAccent[400],
         child: Icon(
