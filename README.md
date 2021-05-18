@@ -6,9 +6,9 @@ Just like the name suggests a document scanner application bulit with flutter an
 
 ### Screenshots
 <p float="left">
-<img src="https://github.com/Gourav2000/doc_scanner/blob/master/Screenshots/ss1.jpeg?raw=true" height="600em" /> &nbsp;
-<img src="https://github.com/Gourav2000/doc_scanner/blob/master/Screenshots/ss2.jpeg?raw=true" height="600em" /> &nbsp;
-<img src="https://github.com/Gourav2000/doc_scanner/blob/master/Screenshots/ss3.jpeg?raw=true" height="600em" />
+<img src="https://github.com/Gourav2000/doc_scanner/blob/master/Screenshots/ss1.jpeg?raw=true" height="500em" /> &nbsp;
+<img src="https://github.com/Gourav2000/doc_scanner/blob/master/Screenshots/ss2.jpeg?raw=true" height="500em" /> &nbsp;
+<img src="https://github.com/Gourav2000/doc_scanner/blob/master/Screenshots/ss3.jpeg?raw=true" height="500em" />
 </p>
 
 
