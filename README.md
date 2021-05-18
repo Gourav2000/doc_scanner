@@ -13,7 +13,7 @@ Just like the name suggests a document scanner application bulit with flutter an
 
 
 ### Working
-<img src="https://github.com/Gourav2000/doc_scanner/blob/master/Screenshots/working.gif?raw=true" height="600em" />
+<img src="https://github.com/Gourav2000/doc_scanner/blob/master/Screenshots/working.gif?raw=true" height="500em" />
 
 
 ## Getting Started
