@@ -5,11 +5,13 @@ Just like the name suggests a document scanner application bulit with flutter an
 ### Show some :heart: and star the repo to support the project
 
 ### Screenshots
-<img src="https://github.com/Gourav2000/doc_scanner/blob/master/Screenshots/ss1.jpeg?raw=true" height="300em" />
-<img src="https://github.com/Gourav2000/doc_scanner/blob/master/Screenshots/ss2.jpeg?raw=true" height="300em" /> <img src="https://github.com/Gourav2000/doc_scanner/blob/master/Screenshots/ss3.jpeg?raw=true" height="300em" />
-
+<p float="left">
+<img src="https://github.com/Gourav2000/doc_scanner/blob/master/Screenshots/ss1.jpeg?raw=true" height="600em" /> &nbsp;
+<img src="https://github.com/Gourav2000/doc_scanner/blob/master/Screenshots/ss2.jpeg?raw=true" height="600em" /> &nbsp;
+<img src="https://github.com/Gourav2000/doc_scanner/blob/master/Screenshots/ss3.jpeg?raw=true" height="600em" />
+</p>
 ### Working
-<img src="ss1.png" height="300em" /> <img src="https://github.com/Gourav2000/doc_scanner/blob/master/Screenshots/working.gif?raw=true" height="300em" />
+<img src="https://github.com/Gourav2000/doc_scanner/blob/master/Screenshots/working.gif?raw=true" height="600em" />
 
 
 ## Getting Started
