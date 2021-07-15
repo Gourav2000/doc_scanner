@@ -1,6 +1,6 @@
 # doc_scanner
 
-Just like the name suggests a document scanner application bulit with flutter and android open cv library...
+Just like the name suggests a document scanner application built with flutter and android open cv library...
 
 ### Show some :heart: and star the repo to support the project
 
